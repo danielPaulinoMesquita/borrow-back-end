@@ -1,6 +1,7 @@
 package com.borrow.borrowsecurity.user;
 
 public enum Role {
-    USER,
+    CUSTOMER,
+    COMPANY,
     ADMIN
 }

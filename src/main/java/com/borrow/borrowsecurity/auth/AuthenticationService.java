@@ -28,11 +28,12 @@ public class AuthenticationService {
         // here I can put variable to determine which is the role of user.
         // also could insert that variable in the class RegisterRequest
         var user = User.builder()
-                .firstname(request.getFirstName())
-                .lastname(request.getLastName())
+                .name(request.getName())
+                .documentNumber(request.getDocumentNumber())
+                .segment(request.getSegment())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.USER)
+                .role(Role.valueOf(request.getSegment()))
                 .build();
 
         repository.save(user);
@@ -45,11 +46,11 @@ public class AuthenticationService {
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
+                        request.getUser(),
                         request.getPassword()
                 )
         );
-        var user = repository.findByEmail(request.getEmail())
+        var user = repository.findByDocumentNumber(request.getUser())
                 .orElseThrow();
 
         var jwtToken = jwtService.generateToken(user);

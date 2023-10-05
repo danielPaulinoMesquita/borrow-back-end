@@ -26,8 +26,9 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Integer id;
-    private String firstname;
-    private String lastname;
+    private String name;
+    private String documentNumber;
+    private String segment;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
@@ -40,7 +41,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return documentNumber;
     }
 
     @Override
