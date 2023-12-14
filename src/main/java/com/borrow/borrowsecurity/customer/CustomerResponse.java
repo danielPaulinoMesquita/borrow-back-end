@@ -2,6 +2,7 @@ package com.borrow.borrowsecurity.customer;
 
 import com.borrow.borrowsecurity.user.Role;
 import com.borrow.borrowsecurity.user.User;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,9 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 // todo To verify if it is possible to change for dto
-@Getter
-@Setter
-
+@Data
 public class CustomerResponse {
     String name;
     List<Role> roles;

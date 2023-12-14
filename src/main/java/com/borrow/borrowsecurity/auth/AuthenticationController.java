@@ -20,7 +20,6 @@ public class AuthenticationController {
                 .ok(service.register(request));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request

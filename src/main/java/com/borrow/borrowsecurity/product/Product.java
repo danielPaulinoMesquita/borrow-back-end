@@ -1,0 +1,24 @@
+package com.borrow.borrowsecurity.product;
+
+import com.borrow.borrowsecurity.customer.Customer;
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "product")
+public class Product {
+
+    @Id
+    @GeneratedValue
+    private Integer id;
+    private String type;
+    private String days;
+    private String value;
+    private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+}
