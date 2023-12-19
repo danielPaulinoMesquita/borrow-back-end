@@ -1,11 +1,9 @@
 package com.borrow.borrowsecurity.demo;
 
-import com.borrow.borrowsecurity.config.JwtAuthenticationFilter;
 import com.borrow.borrowsecurity.config.JwtService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -20,17 +18,13 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @ExtendWith(MockitoExtension.class)
 public class DemoControllerTest {
 
-
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
     private JwtService jwtService;
 
-    @InjectMocks
-    private JwtAuthenticationFilter jwtAuthenticationFilter;
-
-    //https://www.youtube.com/watch?v=BZBFw6fBeIU fixme
+    //https://www.youtube.com/watch?v=XASyDbfQYaw&t=725s fixme
 
     /*
     This annotation @WithMockUser is extremely important to run the tests with security layer
@@ -43,7 +37,6 @@ public class DemoControllerTest {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
                 .get("/api/v1/demo-controller")
                 .accept(MediaType.APPLICATION_JSON)).andReturn();
-
 
         Assertions.assertEquals("Hello From secutiry and DemoController",
                 result.getResponse().getContentAsString());

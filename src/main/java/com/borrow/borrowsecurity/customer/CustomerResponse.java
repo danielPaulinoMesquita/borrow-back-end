@@ -2,15 +2,16 @@ package com.borrow.borrowsecurity.customer;
 
 import com.borrow.borrowsecurity.user.Role;
 import com.borrow.borrowsecurity.user.User;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-// todo To verify if it is possible to change for dto
+// todo to verify if it is possible to change for dto
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class CustomerResponse {
     String name;
     List<Role> roles;
