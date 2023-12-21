@@ -2,10 +2,14 @@ package com.borrow.borrowsecurity.product;
 
 import com.borrow.borrowsecurity.customer.Customer;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@Builder
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "product")
 public class Product {
 

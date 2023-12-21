@@ -3,8 +3,6 @@ package com.borrow.borrowsecurity.demo;
 import com.borrow.borrowsecurity.config.JwtService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -15,7 +13,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 @WebMvcTest(DemoController.class)
-@ExtendWith(MockitoExtension.class)
 public class DemoControllerTest {
 
     @Autowired
@@ -29,10 +26,9 @@ public class DemoControllerTest {
     /*
     This annotation @WithMockUser is extremely important to run the tests with security layer
      */
-    @WithMockUser(value = "spring")
+    @WithMockUser
     @Test
-    public void sayHelloTest() throws Exception
-    {
+    public void sayHelloTest() throws Exception {
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
                 .get("/api/v1/demo-controller")
@@ -40,7 +36,6 @@ public class DemoControllerTest {
 
         Assertions.assertEquals("Hello From secutiry and DemoController",
                 result.getResponse().getContentAsString());
-
 
     }
 

@@ -3,8 +3,6 @@ package com.borrow.borrowsecurity.customer;
 import com.borrow.borrowsecurity.config.JwtService;
 import com.borrow.borrowsecurity.user.Role;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -20,7 +18,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(CustomerController.class)
-@ExtendWith(MockitoExtension.class)
 public class CustomerControllerTest {
 
     @Autowired
@@ -32,7 +29,7 @@ public class CustomerControllerTest {
     @MockBean
     private CustomerService customerService;
 
-    @WithMockUser(value = "spring")
+    @WithMockUser
     @Test
     public void getBasicInfoTest () throws Exception
     {
