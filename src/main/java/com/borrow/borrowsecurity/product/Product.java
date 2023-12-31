@@ -15,7 +15,7 @@ public class Product {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     private String type;
     private String days;
     private String value;

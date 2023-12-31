@@ -29,14 +29,14 @@ public class ProductServiceTest {
     @BeforeEach
     public void setup(){
         Product product1 = Product.builder()
-                                  .id(1)
+                                  .id(1L)
                                   .days("1")
                                   .value("100,00")
                                   .type("FERRAMENTA")
                                   .description("Cut").build();
 
         Product product2 = Product.builder()
-                                  .id(2)
+                                  .id(2L)
                                   .days("1")
                                   .value("100,00")
                                   .type("UTE")
@@ -60,15 +60,15 @@ public class ProductServiceTest {
 
     @Test
     public void getProductTest() {
-        int productId = 1;
+        Long productId = 1L;
 
         when(productRepository
                 .findById(productId))
                 .thenReturn(products
                             .stream()
-                            .filter(product -> product.getId() == productId).findFirst());
+                            .filter(product -> Objects.equals(product.getId(), productId)).findFirst());
 
-        Product product = productService.getProduct(1);
+        Product product = productService.getProduct(productId);
 
         Assertions.assertTrue(products
                               .stream()
@@ -85,11 +85,5 @@ public class ProductServiceTest {
 
         Assertions.assertEquals(productSaved, product);
     }
-
-
-
-
-
-
 
 }

@@ -21,8 +21,14 @@ public class CustomerServiceTest {
     @MockBean
     private UserRepository userRepository;
 
+    @MockBean
+    private CustomerRepository customerRepository;
+
     @Autowired
     private CustomerService customerService;
+
+    @MockBean
+    private CustomerMapper customerMapper;
 
     @Test
     public void getRolesTest() {
@@ -50,15 +56,31 @@ public class CustomerServiceTest {
 
     @Test
     public void saveCustomerTest(){
-        Customer customer = Customer.builder()
-                                    .id("1")
+        CustomerRequest customerRequest = CustomerRequest.builder()
                                     .name("CIA")
                                     .document("123")
                                     .description("Teste")
                                     .build();
 
-        Customer customerSaved = customerService.save(customer);
+        CustomerResponse customerResponse = CustomerResponse.builder()
+                                    .name("CIA")
+                                    .document("123")
+                                    .description("Teste")
+                                    .build();
 
-        Assertions.assertEquals(customer, customerSaved);
+        Customer customer = Customer.builder()
+                                    .name("CIA")
+                                    .document("123")
+                                    .description("Teste")
+                                    .build();
+
+        when(customerMapper.mapCustomerRequestToCustomer(customerRequest)).thenReturn(customer);
+        when(customerMapper.mapCustomerToCustomerResponse(customer)).thenReturn(customerResponse);
+        when(customerRepository.save(customer)).thenReturn(customer);
+
+        CustomerResponse customerSaved = customerService.save(customerRequest);
+
+        Assertions.assertEquals(customer.getName(), customerSaved.getName());
+        Assertions.assertEquals(customer.getDocument(), customerSaved.getDocument());
     }
 }

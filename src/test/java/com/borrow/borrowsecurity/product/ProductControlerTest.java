@@ -30,7 +30,7 @@ public class ProductControlerTest {
     @Test
     public void getProductTest() throws Exception {
         Product product = Product.builder()
-                                 .id(1)
+                                 .id(1L)
                                  .type("COMPANY")
                                  .days("2")
                                  .description("Produto teste")

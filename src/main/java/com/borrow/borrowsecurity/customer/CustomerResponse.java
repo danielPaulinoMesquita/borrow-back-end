@@ -13,10 +13,12 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerResponse {
-
-    String name;
+    private String name;
+    private String document;
+    private String description;
     List<Role> roles;
 
+//    fixme take out later
     public CustomerResponse mapUserToCustomerResponse(User user) {
         CustomerResponse customerResponse = new CustomerResponse();
         customerResponse.setName(user.getName());

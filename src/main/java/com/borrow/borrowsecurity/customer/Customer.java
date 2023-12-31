@@ -20,7 +20,7 @@ public class Customer {
 
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
     private String name;
     private String document;
     private String description;

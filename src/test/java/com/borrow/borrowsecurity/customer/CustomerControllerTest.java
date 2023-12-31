@@ -50,6 +50,10 @@ public class CustomerControllerTest {
                         .andExpect(jsonPath("$.name").value(nameTest));
 
     }
+
+    public void save() throws Exception {
+
+    }
 }
 
 
