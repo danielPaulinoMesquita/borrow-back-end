@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerResponse {
+
     String name;
     List<Role> roles;
 

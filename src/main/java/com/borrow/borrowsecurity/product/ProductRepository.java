@@ -4,8 +4,8 @@ import com.borrow.borrowsecurity.customer.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-public interface ProductRepository extends JpaRepository<Product, Integer> {
+import java.util.List;
 
-    Product findProductByCustomer(Customer customer);
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 }

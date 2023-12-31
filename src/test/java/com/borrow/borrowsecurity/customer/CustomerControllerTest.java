@@ -41,7 +41,6 @@ public class CustomerControllerTest {
                                                     .roles(List.of(Role.CUSTOMER))
                                                     .build();
 
-
         when(customerService.getRoles(documentNumber)).thenReturn(response);
 
         mockMvc.perform(MockMvcRequestBuilders

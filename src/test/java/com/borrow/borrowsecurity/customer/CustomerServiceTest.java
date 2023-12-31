@@ -46,6 +46,19 @@ public class CustomerServiceTest {
         customerResponse.getRoles().forEach(r -> {
             Assertions.assertEquals(userTest.getSegment(), r.name());
         });
+    }
 
+    @Test
+    public void saveCustomerTest(){
+        Customer customer = Customer.builder()
+                                    .id("1")
+                                    .name("CIA")
+                                    .document("123")
+                                    .description("Teste")
+                                    .build();
+
+        Customer customerSaved = customerService.save(customer);
+
+        Assertions.assertEquals(customer, customerSaved);
     }
 }
