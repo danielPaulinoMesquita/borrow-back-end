@@ -14,4 +14,5 @@ public class ProductRequest {
     private String days;
     private String value;
     private String description;
+    private Long customer_id;
 }

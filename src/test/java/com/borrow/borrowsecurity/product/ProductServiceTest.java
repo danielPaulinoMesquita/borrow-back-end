@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -23,6 +24,9 @@ public class ProductServiceTest {
 
     @MockBean
     private ProductRepository productRepository;
+
+    @MockBean
+    private ProductMapper productMapper;
 
     private List<Product> products;
 
@@ -80,10 +84,11 @@ public class ProductServiceTest {
         Product product = this.products.stream().findFirst().orElseThrow();
 
         when(productRepository.save(product)).thenReturn(product);
+        when(productMapper.productRequestToProduct(any())).thenReturn(product);
 
-        Product productSaved = productService.saveProduct(product);
+        Product productSaved = productService.saveProduct(productMapper.productToProductRequest(product));
 
-        Assertions.assertEquals(productSaved, product);
+        Assertions.assertEquals(productSaved.getId(), product.getId());
     }
 
 }

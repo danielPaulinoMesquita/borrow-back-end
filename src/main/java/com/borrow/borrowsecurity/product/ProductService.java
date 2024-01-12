@@ -9,6 +9,7 @@ import java.util.List;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
 
     public Product getProduct(Long id) {
         return productRepository.findById(id).orElseThrow();
@@ -18,7 +19,10 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product saveProduct(Product product) {
+    public Product saveProduct(ProductRequest productRequest) {
+        //fixme this mapper
+        Product product = productMapper.productRequestToProduct(productRequest);
         return productRepository.save(product);
+
     }
 }

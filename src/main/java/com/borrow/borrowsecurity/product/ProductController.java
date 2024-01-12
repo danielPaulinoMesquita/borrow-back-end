@@ -2,10 +2,7 @@ package com.borrow.borrowsecurity.product;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +23,10 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProducts());
     }
 
+    @PostMapping(value = "/save-product")
+    public ResponseEntity<Product> saveProduct(@RequestBody ProductRequest productRequest) {
+        Product product = productService.saveProduct(productRequest);
+        return ResponseEntity.ok(product);
+    }
 
 }

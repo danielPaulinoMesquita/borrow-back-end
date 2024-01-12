@@ -32,15 +32,6 @@ public class JwtService {
         return generateToken(new HashMap<>(), userDetails);
     }
 
-    private class UserInfo {
-        String role;
-        String info;
-
-        public UserInfo(String role, String info) {
-            this.role = role;
-            this.info = info;
-        }
-    }
 
     public String generateToken(
             Map<String, Object> extraClaims,
