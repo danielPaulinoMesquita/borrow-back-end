@@ -6,6 +6,8 @@ The project started and the following images are the current appearance (not fin
 The set-up of directories is based on feature structure. This structure is very used today because it is an excellent way to change
 to microservices and easier to understand and to make maintenance.
 
+![Alt text](src/main/resources/static/images/diagram-borrow.drawio.png "Class Diagram")
+
 * ### TECHNOLOGIES USED
 |   Sring Boot    | Spring MVC | 
 |:---------------:|:----------:|
