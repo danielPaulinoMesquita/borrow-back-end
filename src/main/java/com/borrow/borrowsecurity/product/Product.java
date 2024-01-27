@@ -1,8 +1,10 @@
 package com.borrow.borrowsecurity.product;
 
 import com.borrow.borrowsecurity.customer.Customer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 @Getter
 @Setter
@@ -21,7 +23,11 @@ public class Product {
     private String value;
     private String description;
 
+    @Lob
+    private byte[] imageData;
+
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
