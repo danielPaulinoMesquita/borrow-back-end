@@ -24,10 +24,9 @@ public class Product {
     private String description;
 
     @Lob
-    private byte[] imageData;
+    private String imageData;
 
-    @ManyToOne
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 

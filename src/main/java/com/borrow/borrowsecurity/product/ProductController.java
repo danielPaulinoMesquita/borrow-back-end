@@ -31,18 +31,17 @@ public class ProductController {
     }
 
     @PostMapping(value = "/save-product-image")
-    public String saveProductImage(@RequestPart("product") ProductRequest productRequest,
+    public ResponseEntity<Product> saveProductImage(@RequestPart("product") ProductRequest productRequest,
                                                     @RequestPart("photo") MultipartFile file) {
 
-        //https://stackoverflow.com/questions/52818107/how-to-send-the-multipart-file-and-json-data-to-spring-boot   this save me
-        return productRequest.toString() + "\n" + file.getOriginalFilename() + "\n" + file.getSize();
-//        try {
-//            product = productService.saveProduct(productRequest, file);
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        return ResponseEntity.ok(product);
+        Product product = null;
+        try {
+            product = productService.saveProduct(productRequest, file);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return ResponseEntity.ok(product);
     }
 
 }

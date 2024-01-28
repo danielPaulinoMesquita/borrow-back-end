@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -43,7 +44,7 @@ public class ProductService {
             }
 
             Product product = productMapper.productRequestToProduct(productRequest);
-            product.setImageData(file.getBytes());
+            product.setImageData(Base64.getEncoder().encodeToString(file.getBytes()));
 
             return productRepository.save(product);
 
